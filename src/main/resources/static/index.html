@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/2.3.1/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="index.css">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kunder</title>
+
+</head>
+
+<body>
+<h1>Kunde</h1>
+<form class="form">
+    <div class="form-group">
+        <label>Navn</label>
+        <input type="text" id="navn"/>
+    </div>
+    <div class="form-group">
+        <label>Adresse</label>
+        <input type="text" id="adresse"/>
+    </div>
+    <div class="form-group">
+        <label>Personnummer</label>
+        <input type="number" id="persNr"/> <!-- Changed to number input -->
+    </div>
+    <div class="form-group">
+        <label>Bilskilt</label>
+        <input type="text" id="bilskilt"/>
+    </div>
+    <div class="form-group">
+        <label>Bilmerke</label>
+        <input type="text" list="merkeListe" id="bilMerke" onchange="updateModellList()">
+
+        <datalist id="merkeListe">
+            <option value="Acura"></option>
+            <option value="Alfa Romeo"></option>
+            <option value="Aston Martin"></option>
+            <option value="Audi"></option>
+            <option value="Bentley"></option>
+            <option value="BMW"></option>
+            <option value="Bugatti"></option>
+            <option value="Buick"></option>
+            <option value="Cadillac"></option>
+            <option value="Chevrolet"></option>
+            <option value="Chrysler"></option>
+            <option value="Dodge"></option>
+            <option value="Ferrari"></option>
+            <option value="Fiat"></option>
+            <option value="Ford"></option>
+            <option value="Genesis"></option>
+            <option value="GMC"></option>
+            <option value="Honda"></option>
+            <option value="Hyundai"></option>
+            <option value="Infiniti"></option>
+            <option value="Jaguar"></option>
+            <option value="Jeep"></option>
+            <option value="Kia"></option>
+            <option value="Koenigsegg"></option>
+            <option value="Land Rover"></option>
+            <option value="Lamborghini"></option>
+            <option value="Lexus"></option>
+            <option value="Lincoln"></option>
+            <option value="Lotus"></option>
+            <option value="Lucid"></option>
+            <option value="Maserati"></option>
+            <option value="Mazda"></option>
+            <option value="McLaren"></option>
+            <option value="Mercedes-Benz"></option>
+            <option value="Mini"></option>
+            <option value="Mitsubishi"></option>
+            <option value="Nissan"></option>
+            <option value="Pagani"></option>
+            <option value="Polestar"></option>
+            <option value="Porsche"></option>
+            <option value="Ram"></option>
+            <option value="Rivian"></option>
+            <option value="Rolls-Royce"></option>
+            <option value="Subaru"></option>
+            <option value="Tesla"></option>
+            <option value="Toyota"></option>
+            <option value="Volkswagen"></option>
+            <option value="Volvo"></option>
+        </datalist>
+    </div>
+
+    <div class="form-group">
+        <label>Modell:</label>
+        <input type="text" list="bilModellList" id="bilModell">
+
+        <datalist id="bilModellList"></datalist>
+    </div>
+</form>
+<button class="btn btn-reg" onclick="regKunde()">Registrer</button><br/>
+<h3>Alle kundene:</h3>
+<div id="kundene"></div>
+<button class="btn btn-del" onclick="slettKundene()">Slett alle kunder</button>
+<script src="index.js"></script>
+</body>
+</html>
