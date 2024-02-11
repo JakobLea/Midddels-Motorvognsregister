@@ -69,3 +69,7 @@ th, td {
 td{
     margin: 20px;
 }
+
+.invalid-field {
+    border: 1px solid red;
+}

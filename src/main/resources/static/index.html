@@ -16,23 +16,23 @@
 <form class="form">
     <div class="form-group">
         <label>Navn</label>
-        <input type="text" id="navn"/>
+        <input type="text" id="navn" placeholder="Hans Gustav"/>
     </div>
     <div class="form-group">
         <label>Adresse</label>
-        <input type="text" id="adresse"/>
+        <input type="text" id="adresse" placeholder="Sandveien 22b"/>
     </div>
     <div class="form-group">
         <label>Personnummer</label>
-        <input type="number" id="persNr"/> <!-- Changed to number input -->
+        <input type="number" id="persNr" placeholder="17020592761"/>
     </div>
     <div class="form-group">
         <label>Bilskilt</label>
-        <input type="text" id="bilskilt"/>
+        <input type="text" id="bilskilt" placeholder="DR89364"/>
     </div>
     <div class="form-group">
         <label>Bilmerke</label>
-        <input type="text" list="merkeListe" id="bilMerke" onchange="updateModellList()">
+        <input type="text" list="merkeListe" id="bilMerke" placeholder="BMW" onchange="updateModellList()"/>
 
         <datalist id="merkeListe">
             <option value="Acura"></option>
@@ -88,7 +88,7 @@
 
     <div class="form-group">
         <label>Modell:</label>
-        <input type="text" list="bilModellList" id="bilModell">
+        <input type="text" list="bilModellList" id="bilModell" placeholder="iX"/>
 
         <datalist id="bilModellList"></datalist>
     </div>

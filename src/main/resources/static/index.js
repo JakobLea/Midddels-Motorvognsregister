@@ -2,6 +2,13 @@ $(function(){  // kjøres når dokumentet er ferdig lastet
     hentAlle();
 });
 
+$(document).ready(function() {
+    // Bind change event listener to input fields
+    $('input').change(function() {
+        $(this).removeClass('invalid-field');
+    });
+});
+
 function regKunde() {
     const kunde = {
         navn : $("#navn").val(),
@@ -12,9 +19,45 @@ function regKunde() {
         bilModell : $("#bilModell").val()
     };
 
+    // Validate all fields to ensure they are not empty
+    let invalidFields = [];
+    if (kunde.navn.trim() === '') {
+        invalidFields.push('navn');
+    }
+    if (kunde.adresse.trim() === '') {
+        invalidFields.push('adresse');
+    }
+    if (kunde.persNr.trim() === '' || !validatePersonNr(kunde.persNr)) {
+        invalidFields.push('persNr');
+    }
+    if (kunde.bilskilt.trim() === '' || !/^[A-Za-z]{2}\d{5}$/.test(kunde.bilskilt)) {
+        invalidFields.push('bilskilt');
+    }
+    if (kunde.bilMerke.trim() === '') {
+        invalidFields.push('bilMerke');
+    }
+    if (kunde.bilModell.trim() === '') {
+        invalidFields.push('bilModell');
+    }
+
+    if (invalidFields.length > 0) {
+        alert("Vennligst fyll ut alle felt korrekt");
+        invalidFields.forEach(field => {
+            $(`#${field}`).addClass('invalid-field');
+        });
+        return;
+    }
+
+    // Clear invalid field highlighting
+    $('.invalid-field').removeClass('invalid-field');
+
     // Validate persNr to ensure it contains only numbers
     if (!/^\d+$/.test(kunde.persNr)) {
-        alert("Personnummer should only contain numbers.");
+        return;
+    }
+
+    // Validate bilskilt to contain first 2 letters followed by 5 numbers
+    if (!/^[A-Za-z]{2}\d{5}$/.test(kunde.bilskilt)) {
         return;
     }
 
@@ -28,13 +71,60 @@ function regKunde() {
     $("#bilskilt").val("");
     $("#bilMerke").val("");
     $("#bilModell").val("");
-};
+}
+
+
+function validatePersonNr(personNr) {
+    // Check if personnummer is 11 digits
+    if (personNr.length !== 11) {
+        return false;
+    }
+
+    const individualNumber = personNr.substring(6, 11);
+
+    // Check if individualNumber is between 00001 and 99999
+    const individualNumberInt = parseInt(individualNumber, 10);
+    if (isNaN(individualNumberInt) || individualNumberInt < 1 || individualNumberInt > 99999) {
+        return false;
+    }
+
+    const day = parseInt(personNr.substring(0, 2), 10);
+    const month = parseInt(personNr.substring(2, 4), 10);
+    let year = parseInt(personNr.substring(4, 6), 10);
+
+    // Add 1900 to the year if it's less than 30, 2000 if less than 100, 1800 if between 100 and 130
+    year += year < 30 ? 2000 : (year < 100 ? 1900 : (year >= 100 && year < 130 ? 1800 : 0));
+
+    // Check if the birthdate is valid
+    if (
+        isNaN(day) || isNaN(month) || isNaN(year) ||
+        day < 1 || day > 31 ||
+        month < 1 || month > 12 ||
+        (year < 1800 || (year >= 1800 && year <= 1899) || (year >= 2100))
+    ) {
+        return false;
+    }
+
+    const k1 = parseInt(personNr.charAt(9), 10);
+    const k2 = parseInt(personNr.charAt(10), 10);
+
+    const weights = [3, 7, 6, 1, 8, 9, 4, 5, 2];
+
+    const checksum = weights.reduce((sum, weight, index) => {
+        return sum + weight * parseInt(personNr.charAt(index), 10);
+    }, 0);
+
+    const remainder = checksum % 11;
+    const expectedCheckDigit = remainder === 0 ? 0 : 11 - remainder;
+
+    return k1 === expectedCheckDigit && k2 === (k1 === 10 ? 0 : k2 === 10 ? 0 : k2);
+}
 
 function hentAlle() {
     $.get( "/hentAlle", function( data ) {
         formaterData(data);
     });
-};
+}
 
 function formaterData(kunder){
     var ut = "<table class='table table-striped'>" +
@@ -51,7 +141,7 @@ function slettKundene() {
     $.get( "/slettAlle", function( data ) {
         hentAlle();
     });
-};
+}
 
 const carModels = {
     acura: ['MDX', 'RDX', 'TLX', 'ILX', 'NSX', 'RLX'],
