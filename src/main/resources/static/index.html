@@ -7,12 +7,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Kunder</title>
+    <title>Motorvognsregister</title>
 
 </head>
 
 <body>
-<h1>Kunde</h1>
+<h1>Motorvognsregister</h1>
 <form class="form">
     <div class="form-group">
         <label>Navn</label>
@@ -92,11 +92,13 @@
 
         <datalist id="bilModellList"></datalist>
     </div>
+
+    <button class="btn btn-reg" onclick="regKunde()">Registrer</button>
+
+    <button class="btn btn-del" onclick="slettKundene()">Slett alle kunder</button>
 </form>
-<button class="btn btn-reg" onclick="regKunde()">Registrer</button><br/>
 <h3>Alle kundene:</h3>
 <div id="kundene"></div>
-<button class="btn btn-del" onclick="slettKundene()">Slett alle kunder</button>
 <script src="index.js"></script>
 </body>
 </html>

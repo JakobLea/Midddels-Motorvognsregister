@@ -1,75 +1,71 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 20px;
+.error {
+    border: 1px solid red;
 }
 
-h1 {
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
     color: #333;
 }
 
-.form {
-    max-width: 400px;
-    margin: 20px 0;
+h1, h2 {
+    color: #333;
 }
 
-.form-group {
-    margin-bottom: 15px;
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 label {
+    margin-top: 15px;
     display: block;
     margin-bottom: 5px;
-    color: #555;
 }
 
 input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #3498db;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
+
+
+button {
+    background-color: #848484;
+    color: white;
+    padding: 12px 20px;
+    border: none;
     cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
 }
 
-.btn-reg {
-    background-color: #3498db;
+button:hover {
+    background-color: #575757;
 }
 
-.btn-del {
-    background-color: #e74c3c;
-}
-
-#kundene {
+table {
+    width: 100%;
+    border-collapse: collapse;
     margin-top: 20px;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-table{
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
 }
 
 th, td {
-    border: 1px solid black;
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
 }
 
-td{
-    margin: 20px;
-}
-
-.invalid-field {
-    border: 1px solid red;
+th {
+    background-color: #848484;
+    color: white;
 }
