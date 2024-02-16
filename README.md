@@ -127,3 +127,8 @@ Til slutt la jeg til muligheten for å slette brukere. Da er det en knapp hvor d
 
 * https://no.wikipedia.org/wiki/F%C3%B8dselsnummer <br>
 * https://www.skatteetaten.no/person/folkeregister/identitetsnummer/fodselsnummer/ <br>
+
+<h2>H2 Database</h2>
+
+* https://www.youtube.com/watch?v=PSrHcCwvfVQ&t=1s
+* https://www.youtube.com/watch?v=8QBJMxyXIqc&t=400s
