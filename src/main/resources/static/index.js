@@ -206,3 +206,20 @@ function updateModellList() {
         });
     }
 }
+
+function fillFields() {
+    // Predefined values
+    const predefinedValues = {
+        navn: "John Doe",
+        adresse: "123 Main St",
+        persNr: "07032918993",
+        bilskilt: "AB12345",
+        bilMerke: "Toyota",
+        bilModell: "Camry"
+    };
+
+    // Fill out each field with predefined value
+    Object.keys(predefinedValues).forEach(field => {
+        $("#" + field).val(predefinedValues[field]);
+    });
+}
